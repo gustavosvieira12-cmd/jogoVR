@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#080b1a" />
+    <title>Teste de Reflexos</title>
+    <link rel="stylesheet" href="src/view/style.css">
+  </head>
+  <body>
+    <main id="app">
+      <section class="panel" aria-labelledby="title">
+        <p class="eyebrow">TREINAMENTO DE PILOTO · SIMULADOR 01</p>
+        <h1 id="title">Teste de <span>Reflexos</span></h1>
+        <p class="intro">Treine bloqueios, desvios e toques na arena orbital.</p>
+        <div class="actions">
+          <label for="difficulty-select">Dificuldade</label>
+          <select id="difficulty-select" aria-label="Escolher dificuldade">
+            <option value="medium" selected>Médio</option>
+            <option value="easy">Fácil</option>
+            <option value="hard">Difícil</option>
+            <option value="impossible">Impossível</option>
+          </select>
+          <button id="start-button" class="primary">Começar no computador</button>
+          <button id="vr-button" class="secondary">Entrar em VR</button>
+        </div>
+        <div class="instructions">
+          <div><b class="dot red"></b><span>Desvie dos espinhos vermelhos</span><strong>+3</strong></div>
+          <div><b class="dot blue"></b><span>Bloqueie a energia azul</span><strong>+2</strong></div>
+          <div><b class="dot gold"></b><span>Toque no anel dourado</span><strong>+1</strong></div>
+        </div>
+        <p id="status" class="status" role="status">Ajuste sua posição e mantenha espaço livre à frente.</p>
+        <p class="controls">PC: A/D desvia · mouse move a mão · 1/2 troca a mão · Esc pausa</p>
+      </section>
+      <div id="hud" class="hud" aria-live="polite" hidden></div>
+      <div id="next-warning" class="next-warning" aria-live="polite" hidden></div>
+      <div id="low-life-vignette" class="low-life-vignette" aria-hidden="true" hidden></div>
+      <div id="overlay" class="overlay" hidden></div>
+      <div id="canvas-host" aria-hidden="true"></div>
+    </main>
+    <script>
+      if (location.protocol === 'file:') {
+        document.getElementById('status').textContent = 'Para iniciar: abra um terminal nesta pasta, execute npm run dev e acesse o endereço localhost exibido. O jogo não carrega abrindo o index.html diretamente.';
+        document.getElementById('start-button').disabled = true;
+        document.getElementById('vr-button').disabled = true;
+      }
+    </script>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
